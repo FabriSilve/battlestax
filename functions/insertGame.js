@@ -24,14 +24,12 @@ exports.handler = async (event, context) => {
 
   const gamesCollection = astraClient
     .namespace(process.env.ASTRA_DB_KEYSPACE)
-    .collection(process.env.GAMES_COLLECTION);
+    .collection(process.env.GAME_COLLECTION);
 
-    console.log(process.env.ASTRA_DB_KEYSPACE)
   // let's provision a new game
   try {
     // let's create a new game with the gamesCollection
     const res = await gamesCollection.create(gameId, gamePayload);
-    console.log(res)
     // let's return a 200 with the resoponse from astra
     return {
       statusCode: 200,
